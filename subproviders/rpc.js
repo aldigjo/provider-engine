@@ -37,7 +37,12 @@ RpcSource.prototype.handleRequest = function(payload, next, end){
     body: JSON.stringify(newPayload),
     rejectUnauthorized: false,
   }, function(err, res, body) {
-    if (err) return end(err)
+    // if (err) return end(err)
+    console.log(res)
+    if (res.statusCode != 200) 
+    {
+      return end({code:32000, message: "HTTP error", data: res})
+    }
 
     // parse response into raw account
     var data
