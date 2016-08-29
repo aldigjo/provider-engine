@@ -41,7 +41,7 @@ RpcSource.prototype.handleRequest = function(payload, next, end){
     console.log(res)
     if (res.statusCode != 200) 
     {
-      return end({code:32000, message: "HTTP error", data: res})
+      return end({code:32000, message: ("HTTP error" + res.statusCode), data: res})
     }
 
     // parse response into raw account
