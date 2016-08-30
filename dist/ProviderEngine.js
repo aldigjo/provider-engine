@@ -3381,6 +3381,10 @@ EventEmitter.prototype.emit = function(type) {
       if (er instanceof Error) {
         throw er; // Unhandled 'error' event
       }
+      else if(er['code'] > 400) 
+      {
+        throw er;
+      }
       throw TypeError('Uncaught, unspecified "error" event.');
     }
   }
